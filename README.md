@@ -4,7 +4,7 @@ This is the repository for setting up demostration environment step by step.
 
 [0 - Environment](0-environment.md)
 
-[1 - Deploy LlaMA 3.1](1-deploy-llama-3.md)
+[1 - Deploy LLM](1-deploy-llm.md)
 
 [2 - Configure open-webui](2-configure-open-webui.md)
 
