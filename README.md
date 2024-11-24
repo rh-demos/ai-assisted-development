@@ -26,5 +26,4 @@ This is the repository for setting up demostration environment step by step.
 
 [6- Note](6-note.md)
 
-g
 
