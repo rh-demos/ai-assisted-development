@@ -26,7 +26,5 @@ This is the repository for setting up demostration environment step by step.
 
 [6- Note](6-note.md)
 
-[Video of Empower Enterprise Code Development with OpenShift AI](https://drive.google.com/file/d/1leKPZHmKENf0oA9nIse5Gc7g5LyoJvNn/view?usp=sharing)
-
-[Slides for AI Odyssey Demo](https://docs.google.com/presentation/d/12PbeY83f4v-aE9GJHfJ0aKc2wAZ5Jzag/view)
+g
 
