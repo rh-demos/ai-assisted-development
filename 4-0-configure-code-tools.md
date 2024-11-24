@@ -3,12 +3,12 @@
 Get the code tool deployment configuration resource file.
 
 ```shell
-git clone https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/agnosticg.git
+git clone https://github.com/rh-demos/agnosticg
 ```
 
-Next we will use gitlab and sonarqube.
+We will setup and configure gitlab and sonarqube later.
 
-![image-20241030200202633](assets/4-0-configure-code-tools/image-20241030200202633.png)
+![image-20241124164045401](assets/4-0-configure-code-tools/image-20241124164045401.png)
 
 Log in to your OpenShift cluster via the CLI tool.
 

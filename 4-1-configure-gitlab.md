@@ -1,8 +1,8 @@
 # Configure Gitlab
 
-Modify the gitlab URL in the configuration item in the charts/gitlab/values.yaml file, then install it.
+Modify `<your gitlab host>`,  `<your gitlab user password>` and `<your git lab db password>`in the configuration item in the charts/gitlab/values.yaml file, then install it.
 
-https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/agnosticg/-/raw/main/charts/gitlab/values.yaml
+https://raw.githubusercontent.com/rh-demos/agnosticg/refs/heads/main/charts/gitlab/values.yaml
 
 ```
 cd charts/gitlab
@@ -24,7 +24,7 @@ metadata:
   name: gitlab-runner-secret
   namespace: gitlab
 data:
-  runner-registration-token: <your token>
+  runner-registration-token: <your registration token in base64>
   runner-token: ''
 type: Opaque
 ```

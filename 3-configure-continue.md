@@ -29,8 +29,8 @@ The details are as follows, you need to replace `<your llama inference url>` and
     }
   ],
   "tabAutocompleteModel": {
-    "title": "Llama-3.1-70b",
-    "model": "llama",
+    "title": "granite",
+    "model": "granite",
     "apiBase": "https://<your llama inference url>/v1/",
     "completionOptions": {
     "temperature": 0.1,

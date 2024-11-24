@@ -1,6 +1,8 @@
 # Configure SonarQube
 
-Switch to the sonarqube directory and perform the installation.
+Switch to the sonarqube directory, modify `<your admin password>` in the configuration item in the charts/sonarqube/values.yaml file, then install it.
+
+https://raw.githubusercontent.com/rh-demos/agnosticg/refs/heads/main/charts/sonarqube/values.yaml
 
 ```
 cd charts/sonarqube

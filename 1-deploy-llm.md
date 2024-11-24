@@ -1,26 +1,26 @@
-# Deploy LlaMA 3.1
+# Deploy LLM
 
 Get deployment and configuration resource files
 
 ```shell
-git clone https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/llama-serving.git
+git clone https://github.com/rh-demos/llm-serving
 ```
 
-![image-20241030162637695](assets/1-deploy-llama-3/image-20241030162637695.png)
+![image-20241124160330371](assets/1-deploy-llm/image-20241124160330371.png)
 
 ## Install minio
 
 Create a new project, named `minio`
 
-![image-20241030163414180](assets/1-deploy-llama-3/image-20241030163414180.png)
+![image-20241030163414180](assets/1-deploy-llm/image-20241030163414180.png)
 
 Import minio deployment resources from the web console
 
-![image-20241030163624146](assets/1-deploy-llama-3/image-20241030163624146.png)
+![image-20241030163624146](assets/1-deploy-llm/image-20241030163624146.png)
 
-The content of minio.yaml is as follows. You will need to adjust the root username and password.
+The content of minio.yaml is as follows. You will need to adjust the root `username` and `password`.
 
-https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/llama-serving/-/raw/main/minio.yaml
+https://github.com/rh-demos/llm-serving/blob/main/minio.yaml
 
 ```yaml
 ---
@@ -188,106 +188,48 @@ spec:
 
 After the creation is complete, access the minio console and create a new bucket named `models`.
 
-![image-20241030164213228](assets/1-deploy-llama-3/image-20241030164213228.png)
+![image-20241030164213228](assets/1-deploy-llm/image-20241030164213228.png)
 
 Create a new AKSK, download and save it for later usage.
 
-![image-20241030164656987](assets/1-deploy-llama-3/image-20241030164656987.png)
+![image-20241030164656987](assets/1-deploy-llm/image-20241030164656987.png)
 
 ## Deploy model
 
 Navigate to OpenShift AI web console page from quick link.
 
-![image-20241030164939257](assets/1-deploy-llama-3/image-20241030164939257.png)
-
-Add new single node multi-card vLLM runtime, the configuration file is as follows:
-
-https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/llama-serving/-/raw/main/serving-runtime.yaml
-
-```yaml
-apiVersion: serving.kserve.io/v1alpha1
-kind: ServingRuntime
-metadata:
-  annotations:
-    opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
-    openshift.io/display-name: My vLLM ServingRuntime for KServe
-  labels:
-    opendatahub.io/dashboard: "true"
-  name: my-vllm-runtime
-spec:
-  annotations:
-    prometheus.io/path: /metrics
-    prometheus.io/port: "8080"
-  containers:
-    - args:
-        - --port=8080
-        - --model=/mnt/models
-        - --served-model-name={{.Name}}
-        - --distributed-executor-backend=mp
-        - --dtype=float16
-        - --tensor-parallel-size=8
-        - --max-model-len=8000
-        - --gpu-memory-utilization=0.9
-      command:
-        - python
-        - -m
-        - vllm.entrypoints.openai.api_server
-      env:
-        - name: HF_HOME
-          value: /tmp/hf_home
-      image: quay.io/modh/vllm@sha256:2e7f97b69d6e0aa7366ee6a841a7e709829136a143608bee859b1fe700c36d31
-      name: kserve-container
-      ports:
-        - containerPort: 8080
-          protocol: TCP
-      volumeMounts:
-        - mountPath: /dev/shm
-          name: shm
-  multiModel: false
-  supportedModelFormats:
-    - autoSelect: true
-      name: vLLM
-  volumes:
-    - emptyDir:
-        medium: Memory
-        sizeLimit: 128Gi
-      name: shm
-```
-
-Select `Single-model serving platform` runtime and `REST` protocol.
-
-![image-20241030165349449](assets/1-deploy-llama-3/image-20241030165349449.png)
+![image-20241030164939257](assets/1-deploy-llm/image-20241030164939257.png)
 
 Add a custom notebook image for downloading large model.
 
 - Image location: `quay.io/jonkey/rhods/odh-pytorch-notebook-aria2:2023.2-2`
 - Notebook name: `odh-pytorch-notebook-aria2`
 
-![image-20241030165518164](assets/1-deploy-llama-3/image-20241030165518164.png)
+![image-20241030165518164](assets/1-deploy-llm/image-20241030165518164.png)
 
-Create an AI project named `llama`
+Create an AI project named `llm`
 
-![image-20241030171354193](assets/1-deploy-llama-3/image-20241030171354193.png)
+![image-20241124160630701](assets/1-deploy-llm/image-20241124160630701.png)
 
 Create a workbench in llama project with the following information:
 
 - Name: `my-wb`
 - Notebook Image: `odh-pytorch-notebook-aria2`
 
-![image-20241030171714511](assets/1-deploy-llama-3/image-20241030171714511.png)
+![image-20241124160723845](assets/1-deploy-llm/image-20241124160723845.png)
 
 Environment
 
 -  HF_USERNAME: `<your huggingface username>`
 -  HF_TOKEN: `<your huggingface token>`
 
-![image-20241030171820997](assets/1-deploy-llama-3/image-20241030171820997.png)
+![image-20241030171820997](assets/1-deploy-llm/image-20241030171820997.png)
 
 - Container size: `small`
 - Storage name: `my-wb`
-- Storage size: `300G`
+- Storage size: `20G`
 
-![image-20241030171904430](assets/1-deploy-llama-3/image-20241030171904430.png)
+![image-20241124160832194](assets/1-deploy-llm/image-20241124160832194.png)
 
 - Data connection name: `models`
 - Data connection AK: `<your SK>`
@@ -296,47 +238,47 @@ Environment
 - Data connection Region: `none`
 - Data connection Bucket: `models`
 
-![image-20241030171951914](assets/1-deploy-llama-3/image-20241030171951914.png)
+![image-20241030171951914](assets/1-deploy-llm/image-20241030171951914.png)
 
 Waiting for workbench creation and running, click `Open` link navigate to the created workbench.
 
-![image-20241030172115930](assets/1-deploy-llama-3/image-20241030172115930.png)
+![image-20241124160954384](assets/1-deploy-llm/image-20241124160954384.png)
 
-Git clone source code, the url is: https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/llama-serving.git
+Git clone source code, the url is: https://github.com/rh-demos/llm-serving
 
-![image-20241030172222146](assets/1-deploy-llama-3/image-20241030172222146.png)
+![image-20241124161201032](assets/1-deploy-llm/image-20241124161201032.png)
 
 Run the download-mode-to-s3 notebook to download the model.
 
-![image-20241030172408138](assets/1-deploy-llama-3/image-20241030172408138.png)
+![image-20241124161257146](assets/1-deploy-llm/image-20241124161257146.png)
 
 Save the model to object storage.
 
-![image-20241030191816280](assets/1-deploy-llama-3/image-20241030191816280.png)
+![image-20241124161340826](assets/1-deploy-llm/image-20241124161340826.png)
 
 Log in to minio and view the uploaded models.
 
-![image-20241030191849518](assets/1-deploy-llama-3/image-20241030191849518.png)
+![image-20241124161517834](assets/1-deploy-llm/image-20241124161517834.png)
 
 Deploy the model according to the following information
 
-- Model name: `llama`
-- Serving runtime: `My vLLM ServingRuntime for KServe`
+- Model name: `granite`
+- Serving runtime: `vLLM ServingRuntime for KServe`
+- Model frame work: `vLLM`
 - Model server replicas: `1`
 
-![image-20241030192143716](assets/1-deploy-llama-3/image-20241030192143716.png)
+![image-20241124162011896](assets/1-deploy-llm/image-20241124162011896.png)
 
-- CPUs requested: `6`
-
-- CPU limit: `12`
-- Memory requested: `60Gi`
-- Memory limit: `120Gi`
+- CPUs requested: `2`
+- CPU limit: `4`
+- Memory requested: `8Gi`
+- Memory limit: `16Gi`
 - Accelerator: `NV GPU`
-- Number of accelerators: 8
+- Number of accelerators: 1
 - Make deployed models available through an external route: `checked`
 - Require token authentication: `checked`
 
-![image-20241030192249351](assets/1-deploy-llama-3/image-20241030192249351.png)
+![image-20241124162044081](assets/1-deploy-llm/image-20241124162044081.png)
 
 Service account name: `default-name`
 
@@ -345,13 +287,13 @@ Existing data connection:
 -  Name: `models`
 - Path: `models/Llama-3.1-70B-Instruct`
 
-![image-20241030192348151](assets/1-deploy-llama-3/image-20241030192348151.png)
+![image-20241124162115288](assets/1-deploy-llm/image-20241124162115288.png)
 
 Wait for the deployment to complete.
 
-![image-20241030192511348](assets/1-deploy-llama-3/image-20241030192511348.png)
+![image-20241124162200839](assets/1-deploy-llm/image-20241124162200839.png)
 
-Get and save the url and token from a running model
+Get and save the url and token from the running model
 
 - Inference endpoint: `<your Inference endpoint >`
 - Token secret: `<your Token secret >`

@@ -4,7 +4,7 @@
 
 - OpenShift 4.16 environment
 - OpenShift account with administrator privileges
-- Nvidia L4 GPU x 8
+- Nvidia L4 GPU x 1
 - OpenShift AI components installed
 
 ## The operators involved in this practice are as follows, can be installed in sequence

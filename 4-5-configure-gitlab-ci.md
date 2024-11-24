@@ -12,9 +12,13 @@ Create the `SONAR_TOKEN` variable. The token had been created for gitlab on sona
 
 ![image-20241030215650743](assets/4-5-configure-gitlab-ci/image-20241030215650743.png)
 
+Create the `AI_AGENT_URL` variable. The ai agent url is ai-suggestion we deployed earlier.
+
+![image-20241124165546922](assets/4-5-configure-gitlab-ci/image-20241124165546922.png)
+
 The CICD variable configuration is completed.
 
-![image-20241030215725888](assets/4-5-configure-gitlab-ci/image-20241030215725888.png)
+![image-20241124165809367](assets/4-5-configure-gitlab-ci/image-20241124165809367.png)
 
 `User1` and `user2`  had been created via gitlab installation script.
 
@@ -28,7 +32,7 @@ Add `user1` and `user2` to the `dev` group.
 
 ![image-20241030215940560](assets/4-5-configure-gitlab-ci/image-20241030215940560.png)
 
-Clone `https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/my-quarkus.git` from github to the `dev` group of gitlab.
+Clone `https://github.com/rh-demos/my-quarkus` from github to the `dev` group of gitlab.
 
 ![image-20241030220134543](assets/4-5-configure-gitlab-ci/image-20241030220134543.png)
 
@@ -116,14 +120,14 @@ sonar:
 
     if [ -n "${CI_MERGE_REQUEST_IID}" ]; then
       echo "Triggering AI suggestion..."
-      curl -s -k -X GET "https://<your ai suggestion url>/suggestion?project_key=${PROJECT_KEY}&merge_request_iid=${CI_MERGE_REQUEST_IID}"
+      curl -s -k -X GET "${AI_AGENT_URL}/suggestion?project_key=${PROJECT_KEY}&merge_request_iid=${CI_MERGE_REQUEST_IID}"
     fi
 
     exit $SONAR_EXIT_CODE
   allow_failure: false
   only:
-- merge_requests
-- main
+  - merge_requests
+  - main
 
 test:
   stage: test

@@ -3,7 +3,7 @@
 Get the ai-suggestion deployment configuration file.
 
 ```
-git clone https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/sonarqube-issue-ai-suggestion.git
+git clone https://github.com/rh-demos/sonarqube-issue-ai-suggestion
 ```
 
 ![image-20241030214738243](assets/4-4-configure-ai-agent/image-20241030214738243.png)
@@ -24,9 +24,9 @@ Import the openshift.xml resource creation file.
 
 ![image-20241030215016106](assets/4-4-configure-ai-agent/image-20241030215016106.png)
 
-The content of the openshift.yaml file is as follows. You will need to replace the `URLs` and `tokens` of llama, `gitlab`, and `sonarqube`.
+The content of the openshift.yaml file is as follows. You will need to replace the `URLs` and `tokens` of `your model`, `gitlab`, and `sonarqube`, your model name will be: `granite` 
 
-https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/sonarqube-issue-ai-suggestion/-/raw/main/openshift.yaml
+https://raw.githubusercontent.com/rh-demos/sonarqube-issue-ai-suggestion/refs/heads/main/openshift.yaml
 
 ```
 ---
@@ -37,7 +37,7 @@ metadata:
 data:
   USE_AI_MODEL: openai
   OPENAI_API_URL: <your openai url>
-  OPENAI_AI_MODEL: llama
+  OPENAI_AI_MODEL: <your model>
   OPENAI_API_KEY: <your openai key>
   SONARQUBE_URL: <your sonar url>
   SONARQUBE_TOKEN: <your sonarqube token>
@@ -98,6 +98,7 @@ spec:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
 ---
+
 ```
 
 ![image-20241030215219308](assets/4-4-configure-ai-agent/image-20241030215219308.png)

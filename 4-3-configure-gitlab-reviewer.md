@@ -3,7 +3,7 @@
 Get the deployment configuration file of GitLab Reviewer.
 
 ```
-git clone https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/gitlab-reviewer.git
+git clone https://github.com/rh-demos/gitlab-reviewer
 ```
 
 ![image-20241030213912316](assets/4-3-configure-gitlab-reviewer/image-20241030213912316.png)
@@ -12,7 +12,7 @@ Switch to the gitlab project from OpenShift and import the deployment resource f
 
 ![image-20241030214008548](assets/4-3-configure-gitlab-reviewer/image-20241030214008548.png)
 
-https://gitlab.consulting.redhat.com/ai-odyssey-2025/gcg-ssa-team/gitlab-reviewer/-/raw/main/openshift.yaml
+https://raw.githubusercontent.com/rh-demos/gitlab-reviewer/refs/heads/main/openshift.yaml
 
 The content of openshift.yaml is as follows:
 
