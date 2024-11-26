@@ -6,7 +6,7 @@ Get deployment and configuration resource files
 git clone https://github.com/rh-demos/llm-serving
 ```
 
-![image-20241124160330371](assets/1-deploy-llm/image-20241124160330371.png)
+![image-20241126163953617](assets/1-deploy-llm/image-20241126163953617.png)
 
 ## Install minio
 
@@ -200,6 +200,54 @@ Navigate to OpenShift AI web console page from quick link.
 
 ![image-20241030164939257](assets/1-deploy-llm/image-20241030164939257.png)
 
+Add new single node vLLM runtime, the configuration file is as follows:
+
+https://raw.githubusercontent.com/rh-demos/llm-serving/refs/heads/main/serving-runtime.yaml
+
+```
+apiVersion: serving.kserve.io/v1alpha1
+kind: ServingRuntime
+metadata:
+  annotations:
+    opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
+    openshift.io/display-name: My vLLM ServingRuntime for KServe
+  labels:
+    opendatahub.io/dashboard: "true"
+  name: my-vllm-runtime
+spec:
+  annotations:
+    prometheus.io/path: /metrics
+    prometheus.io/port: "8080"
+  containers:
+    - args:
+        - --port=8080
+        - --model=/mnt/models
+        - --served-model-name={{.Name}}
+        - --distributed-executor-backend=mp
+        - --max-model-len
+        - "8000"
+      command:
+        - python
+        - -m
+        - vllm.entrypoints.openai.api_server
+      env:
+        - name: HF_HOME
+          value: /tmp/hf_home
+      image: quay.io/modh/vllm:rhoai-2.16-cuda
+      name: kserve-container
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+  multiModel: false
+  supportedModelFormats:
+    - autoSelect: true
+      name: vLLM
+```
+
+Select `Single-model serving platform` runtime and `REST` protocol.
+
+![image-20241126163824747](assets/1-deploy-llm/image-20241126163824747.png)
+
 Add a custom notebook image for downloading large model.
 
 - Image location: `quay.io/jonkey/rhods/odh-pytorch-notebook-aria2:2023.2-2`
@@ -250,24 +298,24 @@ Git clone source code, the url is: https://github.com/rh-demos/llm-serving
 
 Run the download-mode-to-s3 notebook to download the model.
 
-![image-20241124161257146](assets/1-deploy-llm/image-20241124161257146.png)
+![image-20241126170356524](assets/1-deploy-llm/image-20241126170356524.png)
 
 Save the model to object storage.
 
-![image-20241124161340826](assets/1-deploy-llm/image-20241124161340826.png)
+![image-20241126170444977](assets/1-deploy-llm/image-20241126170444977.png)
 
 Log in to minio and view the uploaded models.
 
-![image-20241124161517834](assets/1-deploy-llm/image-20241124161517834.png)
+![image-20241126165756812](assets/1-deploy-llm/image-20241126165756812.png)
 
 Deploy the model according to the following information
 
-- Model name: `granite`
-- Serving runtime: `vLLM ServingRuntime for KServe`
+- Model name: `mistral`
+- Serving runtime: `My vLLM ServingRuntime for KServe`
 - Model frame work: `vLLM`
 - Model server replicas: `1`
 
-![image-20241124162011896](assets/1-deploy-llm/image-20241124162011896.png)
+![image-20241126170002387](assets/1-deploy-llm/image-20241126170002387.png)
 
 - CPUs requested: `2`
 - CPU limit: `4`
@@ -285,13 +333,13 @@ Service account name: `default-name`
 Existing data connection:
 
 -  Name: `models`
-- Path: `models/Llama-3.1-70B-Instruct`
+- Path: `models/Mistral-7B-Instruct-v0.2`
 
-![image-20241124162115288](assets/1-deploy-llm/image-20241124162115288.png)
+![image-20241126170104512](assets/1-deploy-llm/image-20241126170104512.png)
 
 Wait for the deployment to complete.
 
-![image-20241124162200839](assets/1-deploy-llm/image-20241124162200839.png)
+![image-20241126170658672](assets/1-deploy-llm/image-20241126170658672.png)
 
 Get and save the url and token from the running model
 

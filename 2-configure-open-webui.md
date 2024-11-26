@@ -68,7 +68,7 @@ spec:
             memory: "1Gi"
         env:
         - name: OPENAI_API_BASE_URL
-          value: "https://granite.llm.svc.cluster.local/v1"
+          value: "https://my-model.llm.svc.cluster.local/v1"
         tty: true
         securityContext:
           runAsUser: 0
@@ -116,21 +116,21 @@ Access the created open-webui url and register a new user.
 
 ![image-20241030193916489](assets/2-configure-open-webui/image-20241030193916489.png)
 
-Log in to open-webui with the registered user, navigate to the management configuration page, and enter the `URL` and `token` of the granite model obtained previously, add new model id is `granite`
+Log in to open-webui with the registered user, navigate to the management configuration page, and enter the `URL` and `token` of the mister model obtained previously, add new model id is `mistral`
 
-![image-20241124162703176](assets/2-configure-open-webui/image-20241124162703176.png)
+![image-20241126171251306](assets/2-configure-open-webui/image-20241126171251306.png)
 
 Connection detail is below.
 
-![image-20241124162603778](assets/2-configure-open-webui/image-20241124162603778.png)
+![image-20241126171455074](assets/2-configure-open-webui/image-20241126171455074.png)
 
 Return to the main dialog page and enter the dialog content: `Provide a java code sample of a micro-service`
 
 The model responds to the conversation and outputs the sample code of the microservice.
 
-![image-20241124163323789](assets/2-configure-open-webui/image-20241124163323789.png)
+![image-20241126171603823](assets/2-configure-open-webui/image-20241126171603823.png)
 
 The model responds to the conversation and outputs how to run the microservice.
 
-![image-20241124163346290](assets/2-configure-open-webui/image-20241124163346290.png)
+![image-20241126171637065](assets/2-configure-open-webui/image-20241126171637065.png)
 

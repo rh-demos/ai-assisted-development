@@ -24,7 +24,7 @@ Import the openshift.xml resource creation file.
 
 ![image-20241030215016106](assets/4-4-configure-ai-agent/image-20241030215016106.png)
 
-The content of the openshift.yaml file is as follows. You will need to replace the `URLs` and `tokens` of `your model`, `gitlab`, and `sonarqube`, your model name will be: `granite` 
+The content of the openshift.yaml file is as follows. You will need to replace the `URLs` and `tokens` of `your model`, `gitlab`, and `sonarqube`, your model name will be: `mistral` 
 
 https://raw.githubusercontent.com/rh-demos/sonarqube-issue-ai-suggestion/refs/heads/main/openshift.yaml
 

@@ -14,9 +14,9 @@ The details are as follows, you need to replace `<your llama inference url>` and
 {
   "models": [
     {
-      "title": "Llama-3.1-70b",
-      "model": "llama",
-      "apiBase": "https://<your llama inference url>/v1/",
+      "title": "mistral",
+      "model": "mistral",
+      "apiBase": "https://<your llm inference url>/v1/",
       "completionOptions": {
       "temperature": 0.1,
       "topK": 1,
@@ -29,8 +29,8 @@ The details are as follows, you need to replace `<your llama inference url>` and
     }
   ],
   "tabAutocompleteModel": {
-    "title": "granite",
-    "model": "granite",
+    "title": "mistral",
+    "model": "mistral",
     "apiBase": "https://<your llama inference url>/v1/",
     "completionOptions": {
     "temperature": 0.1,
