@@ -109,11 +109,10 @@ The details are as follows, you need to replace `<your llama inference url>` and
 }
 ```
 
-Use the shortcut key to trigger the code assistant and enter the command: `add a new api for health check`
+Use the shortcut key(command + I for MAC) to trigger the code assistant and enter the description: `add a new function api for health check`
 
-![image-20241030194808375](assets/3-configure-continue/image-20241030194808375.png)
+![image-20241126212536779](assets/3-configure-continue/image-20241126212536779.png)
 
 The code assistant generates a health check API.
 
-![image-20241030194844916](assets/3-configure-continue/image-20241030194844916.png)
-
+![image-20241126212733382](assets/3-configure-continue/image-20241126212733382.png)

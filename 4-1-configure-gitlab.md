@@ -11,6 +11,10 @@ cd charts/gitlab
 
 ![image-20241030200700186](assets/4-1-configure-gitlab/image-20241030200700186.png)
 
+You will need to wait for about 5 mins for gitlab initilaization script to run completely.
+
+![image-20241126215943853](assets/4-1-configure-gitlab/image-20241126215943853.png)
+
 Get  gitlab url and access the gitlab page from the browser, navigate to  CICD runner configuration page, and get the registration token for the runner.
 
 ![image-20241030200733626](assets/4-1-configure-gitlab/image-20241030200733626.png)

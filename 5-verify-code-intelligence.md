@@ -35,7 +35,7 @@ In the comment of the merge request, you will find that the sonarqube analysis r
 
 Continuing to scroll down, you can see that the code modification suggestions obtained by ai suggestion calling the llama model have been added to the comment of the merge request.
 
-![image-20241030221949176](assets/5-verify-code-intelligence/image-20241030221949176.png)
+![image-20241126223913679](assets/5-verify-code-intelligence/image-20241126223913679.png)
 
 from the ai suggestion log of OpenShift web console page, you will find that ai suggestion invoke the LLM and LLM  suggestions of code changes.
 
@@ -51,7 +51,9 @@ You will find that the pipeline triggered by the merge request of the `My Quarku
 
 From the comment of the merge request, you will find that sonarqube analyzes the modification of the merge request and finds that there is a code smell. You can also see that the following comment is the modification suggestion of AI.
 
-![image-20241030222417371](assets/5-verify-code-intelligence/image-20241030222417371.png)
+![image-20241126224245143](assets/5-verify-code-intelligence/image-20241126224245143.png)
+
+if you want to fix the `Code Smell`, you can follow the AI suggstion to change the code.
 
 Log in to gitlab review and you will find that the merge request CI generated earlier has been successful.
 

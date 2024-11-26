@@ -31,6 +31,8 @@ Add gitlab configuration in the `DevOps Platform Integrations` configuration on 
 
 Enter the name of the configuration: `gitlab`, `the URL` of gitlab and the `token` created previously.
 
+**note**: suffix is /api/v4
+
 ![image-20241030213450546](assets/4-2-configure-sonarqube/image-20241030213450546.png)
 
 The configuration verification succeeded.

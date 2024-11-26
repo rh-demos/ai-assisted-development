@@ -1,6 +1,6 @@
 # Configure Gitlab CI
 
-Create an access token for gitlab from the sonarqube page, type is `global`.
+Create an access token for gitlab from the sonarqube page, name is `gitlab`, type is `global`.
 
 ![image-20241030215500079](assets/4-5-configure-gitlab-ci/image-20241030215500079.png)
 
@@ -80,7 +80,7 @@ Navigate to the gitlab CICD edit page.
 
 ![image-20241030220814765](assets/4-5-configure-gitlab-ci/image-20241030220814765.png)
 
-Add the following CI definition. The sonarqube `projectKey` and `ai suggestion url` need to be replaced.
+Add the following CI definition. The sonarqube `projectKey` and `ai suggestion url` need to be replaced, projectKey can be found from previous copied `.gitlab-ci.yml` content.
 
 ```
 image: maven:3.6.3-jdk-11
@@ -151,15 +151,15 @@ package:
     - your-runner-tag
 ```
 
-The first pipeline will be triggered after click `Save`
+The first pipeline will be triggered after click `Save`, wait for its completion.
 
 ![image-20241030220938227](assets/4-5-configure-gitlab-ci/image-20241030220938227.png)
 
-Log in to sonarqube as `user1` and clone `My Quarkus` project.
+Log in to sonarqube as `user1` and fork `My Quarkus` project.
 
 ![image-20241030221017191](assets/4-5-configure-gitlab-ci/image-20241030221017191.png)
 
-Navigate to the general configuration item of the cloned project and turn off CICD.
+Navigate to the general configuration item of the cloned project (`Visibility, project features, permissions)` and turn off CICD, do not forget to save changes.
 
 ![image-20241030221049928](assets/4-5-configure-gitlab-ci/image-20241030221049928.png)
 

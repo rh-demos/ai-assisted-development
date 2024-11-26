@@ -16,7 +16,7 @@ Create an access token for ai-agent from sonarqube, the type is for user.
 
 ![image-20241030214916308](assets/4-4-configure-ai-agent/image-20241030214916308.png)
 
-Create the ai-suggestion project from OpenShift.
+Create the `ai-suggestion` project from OpenShift.
 
 ![image-20241030214940862](assets/4-4-configure-ai-agent/image-20241030214940862.png)
 

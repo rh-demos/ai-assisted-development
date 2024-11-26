@@ -70,7 +70,7 @@ spec:
 ---
 ```
 
-Create an access token for gitlab-reviewer on gitlab.
+Create an access token for `gitlab-reviewer` on gitlab.
 
 ![image-20241030214112726](assets/4-3-configure-gitlab-reviewer/image-20241030214112726.png)
 
