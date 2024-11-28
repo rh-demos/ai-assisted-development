@@ -4,11 +4,11 @@ Search for the Continue extension in vscode and install it.
 
 ![image-20241030194553922](assets/3-configure-continue/image-20241030194553922.png)
 
-Add llama configuration items.
+Add llm configuration items.
 
 ![image-20241030194624961](assets/3-configure-continue/image-20241030194624961.png)
 
-The details are as follows, you need to replace `<your llama inference url>` and `<your api key>` portion.
+The details are as follows, you need to replace `<your llm inference url>` and `<your api key>` portion.
 
 ```
 {
@@ -31,7 +31,7 @@ The details are as follows, you need to replace `<your llama inference url>` and
   "tabAutocompleteModel": {
     "title": "mistral",
     "model": "mistral",
-    "apiBase": "https://<your llama inference url>/v1/",
+    "apiBase": "https://<your llm inference url>/v1/",
     "completionOptions": {
     "temperature": 0.1,
     "topK": 1,
