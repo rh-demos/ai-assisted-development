@@ -103,10 +103,11 @@ Once uploaded, Code server will try to open the file and complain about its size
 
 16•	Ctrl+I, Try a "write a basic fastapi server" prompt, enjoy the result.
 
+https://ai-on-openshift.io/demos/codellama-continue/img/codellama-continue.mp4
 <video controls autoplay loop muted>
-      <source id="mp4" src="/demos/codellama-continue/img/codellama-continue.mp4" type="video/mp4">
+      <source id="mp4" src="[/demos/codellama-continue/img/codellama-continue.mp4](https://ai-on-openshift.io/demos/codellama-continue/img/codellama-continue.mp4)" type="video/mp4">
     <img src="/demos/codellama-continue/img/demo-still.png" alt="Demo Still" title="Your browser does not support the <video> tag" />
-</videos>
+
 
 # （Optional）Configure continue in the VScode client
 Search for the Continue extension in vscode and install it.
