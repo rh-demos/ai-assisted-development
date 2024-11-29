@@ -29,11 +29,11 @@ The goal of this demo is to demonstrate how to use AI to improve software develo
 
 ## **Additional Resources**
 
-- **Reference Document**: [Toturials](https://github.com/rh-demos/ai-assisted-development/blob/main/README.md)
+- **Reference Document**: [Tutorials](https://github.com/rh-demos/ai-assisted-development/blob/main/README.md)
 
  **This demo is not just a showcase but a hands-on experience that provides insights into the potential development tools work together with Generative AI on Red Hat OpenShift AI, supported by powerful GPU technology.**
 
-## Toturials
+## Tutorials
 
 [0 - Environment](0-environment.md)
 
