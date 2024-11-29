@@ -103,6 +103,10 @@ Once uploaded, Code server will try to open the file and complain about its size
 
 16•	Ctrl+I, Try a "write a basic fastapi server" prompt, enjoy the result.
 
+[https://www.youtube.com/watch?v=Hc79sDi3f0U](https://ai-on-openshift.io/demos/codellama-continue/img/codellama-continue.mp4)
+
+
+
 https://ai-on-openshift.io/demos/codellama-continue/img/codellama-continue.mp4
 <video controls autoplay loop muted>
       <source id="mp4" src="https://ai-on-openshift.io/demos/codellama-continue/img/codellama-continue.mp4" type="video/mp4">
