@@ -105,7 +105,7 @@ Once uploaded, Code server will try to open the file and complain about its size
 
 https://ai-on-openshift.io/demos/codellama-continue/img/codellama-continue.mp4
 <video controls autoplay loop muted>
-      <source id="mp4" src="[/demos/codellama-continue/img/codellama-continue.mp4](https://ai-on-openshift.io/demos/codellama-continue/img/codellama-continue.mp4)" type="video/mp4">
+      <source id="mp4" src="https://ai-on-openshift.io/demos/codellama-continue/img/codellama-continue.mp4" type="video/mp4">
     <img src="/demos/codellama-continue/img/demo-still.png" alt="Demo Still" title="Your browser does not support the <video> tag" />
 
 
