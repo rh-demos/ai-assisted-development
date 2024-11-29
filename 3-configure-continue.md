@@ -45,11 +45,11 @@ Once uploaded, Code server will try to open the file and complain about its size
 
 ![continue-extension-vsix-icon](assets/3-configure-continue/continue-extension-vsix-icon.png)
 
-12•	Get the Model inference endpoint url and API token secret
+12•	Get the Model Name, Model inference endpoint url and API token secret
 
 ![oai-llm-serving-url](assets/3-configure-continue/oai-llm-serving-url.png)
 
-13•	Change the apiBase and apiKey value as the following
+13•	Change the model, apiBase and apiKey value (These 3 parameters from previous step)as the following
 
 ```
 
@@ -97,7 +97,7 @@ Once uploaded, Code server will try to open the file and complain about its size
 
 ![continue-extension-vsix-config](assets/3-configure-continue/continue-extension-vsix-config.png)
 
-15•	Switch to the new Model
+15•	Switch to the new Model (or whatever name you setted)
 
 ![continue-extension-vsix-switch](assets/3-configure-continue/continue-extension-vsix-switch.png)
 
