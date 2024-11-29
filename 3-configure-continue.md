@@ -72,12 +72,19 @@ Once uploaded, Code server will try to open the file and complain about its size
 
 
 ```
+
 14•	All look like the following:
+
 ![continue-extension-vsix-config](assets/3-configure-continue/continue-extension-vsix-config.png)
+
 15•	Switch to the new Model
+
 ![continue-extension-vsix-switch](assets/3-configure-continue/continue-extension-vsix-switch.png)
+
 16•	Ctrl+I, Try a "write a basic fastapi server" prompt, enjoy the result.
+
 ![notebook-image-import-name](https://ai-on-openshift.io/demos/codellama-continue/img/codellama-continue.mp4)
+
 # Configure contine in the VScode client
 Search for the Continue extension in vscode and install it.
 
