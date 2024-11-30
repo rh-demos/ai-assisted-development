@@ -1,129 +1,63 @@
 # Configure continue in the web version Code Server
 
-1•	Open the ODH dashboard website, navigate to the "Settings" - "Notebook images" menu, import the custom image which can run a Code Server workbench.
-
-The custom image, like this one. [image](https://quay.io/repository/modh/codeserver?tab=tags&tag=codeserver-ubi9-python-3.9-2023b-20240301-6560116)
+Open the OpenShift AI Web Console, navigate to the `Settings` - `Notebook images` menu, import the custom image which can run a Code Server workbench.
 
 ![notebook-image-import-new](assets/3-configure-continue/notebook-image-import-new.png)
 
-![quayio-codeserver-ubi9-python](assets/3-configure-continue/quayio-codeserver-ubi9-python.png)
+The custom image can be this one. [image](https://quay.io/repository/modh/codeserver?tab=tags&tag=codeserver-ubi9-python-3.9-2023b-20240301-6560116)
 
-2•	Input the image url into the Image location field. Input the new notebook image's name, and remember it, a step in the future we will use the name.
+![image-20241130110542822](assets/3-configure-continue/image-20241130110542822.png)
 
-![notebook-image-import-name](assets/3-configure-continue/notebook-image-import-name.png)
+Input the image url `quay.io/modh/codeserver:codeserver-ubi9-python-3.9-20241114` into the Image location field. Input the new notebook image's name like `codeserver-ubi9-python-3.9-20241114` ,  please remember it, we will use the name later.
 
-3•	Create a Data Science Project, named codeserver(for example)
+![image-20241130110249708](assets/3-configure-continue/image-20241130110249708.png)
 
-![create-data-science-project](assets/3-configure-continue/create-data-science-project.png)
+Create a Data Science Project, named `codeserver` (just for example)
 
-4•	Click the "Create a workbench" button
+![image-20241130111001941](assets/3-configure-continue/image-20241130111001941.png)
 
-![create-workbench](assets/3-configure-continue/create-workbench.png)
+Click the `Create a workbench` button
 
-5•	Select the image we just created and remembered
+![image-20241130111321122](assets/3-configure-continue/image-20241130111321122.png)
 
-![create-workbench-name](assets/3-configure-continue/create-workbench-name.png)
+Select the image we just created `codeserver-ubi9-python-3.9-20241114`, name is `My Workbench`, Container size is `Small`,  Accelerator is `None`
 
-6•	After clicked "Create workbench" button, and the workbench running, click the "Open" url to open the Code Server Web IDE
+![image-20241130111548379](assets/3-configure-continue/image-20241130111548379.png)
 
-![create-workbench-open](assets/3-configure-continue/create-workbench-open.png)
+After clicked `Create workbench` button, and the workbench running, click the `Open` url to open the Code Server Web IDE
 
-7•	As Code Server is fully open source, it does not include the Microsoft Marketplace. So you must download the Continue extension file from the [Open VSX Registry](https://open-vsx.org/extension/Continue/continue). Click on the Download button and select the Linux x64 version. You will get a file named Continue.continue-0.9.237@linux-x64.vsix (or whatever version you download).
+![image-20241130111932624](assets/3-configure-continue/image-20241130111932624.png)
 
-![continue-download-website.png](assets/3-configure-continue/continue-download-website.png)
+As Code Server is fully open source, it does not include the Microsoft Marketplace. you can download the Continue extension file from the [Open VSX Registry](https://open-vsx.org/extension/Continue/continue). Click on the Download button and select the Linux x64 version. You will get a file named Continue.continue-0.9.237@linux-x64.vsix (or whatever version you download).
 
-9•	Upload the plugin file into the Web IDE through the "Install Extension VSIX" menu
+![image-20241130113011203](assets/3-configure-continue/image-20241130113011203.png)
+
+Upload the plugin file into the Web IDE through the `Install Extension VSIX` menu
 Once uploaded, Code server will try to open the file and complain about its size, just close the tab:1
 
-![continue-install-extension-vsix](assets/3-configure-continue/continue-install-extension-vsix.png)
+![image-20241130112619902](assets/3-configure-continue/image-20241130112619902.png)
 
-10•	Wait a minute, click the Extension icon, you will see the Contine plugin ready
+Wait a minute, click the Extension icon, you will see the Contine plugin ready
 
-![continue-extension-vsix-display](assets/3-configure-continue/continue-extension-vsix-display.png)
+![image-20241130113134104](assets/3-configure-continue/image-20241130113134104.png)
 
-11•	Click the Contine extension icon, open the config file
+Click the Contine extension icon, open the config file
 
-![continue-extension-vsix-icon](assets/3-configure-continue/continue-extension-vsix-icon.png)
+![image-20241130113827573](assets/3-configure-continue/image-20241130113827573.png)
 
-12•	Get the Model Name, Model inference endpoint url and API token secret
+Get the Model Name, Model inference endpoint url and API token secret
 
-![oai-llm-serving-url](assets/3-configure-continue/oai-llm-serving-url.png)
+![image-20241130114006928](assets/3-configure-continue/image-20241130114006928.png)
 
-13•	Change the model, apiBase and apiKey value (These 3 parameters from previous step)as the following
-
-```
-
-       {
-      "title": "mistral",
-      "model": "mistral",
-      "apiBase": "https://mistral-llm.apps.cluster-w526d.w526d.sandbox1410.opentlc.com/v1/",
-      "completionOptions": {
-      "temperature": 0.1,
-      "topK": 1,
-      "topP": 1,
-      "presencePenalty": 0,
-      "frequencyPenalty": 0
-      },
-      "provider": "openai",
-      "apiKey": "xxxxxx"
-    }
-
-
-
-   "tabAutocompleteModel": {
-      "title": "mistral",
-      "model": "mistral",
-      "apiBase": "https://mistral-llm.apps.cluster-w526d.w526d.sandbox1410.opentlc.com/v1/",
-      "completionOptions": {
-      "temperature": 0.1,
-      "topK": 1,
-      "topP": 1,
-      "presencePenalty": 0,
-      "frequencyPenalty": 0
-      },
-      "provider": "openai",
-      "apiKey": "xxxxxx"
-  },
-  "tabAutocompleteOptions": {
-      "useCopyBuffer": false,
-      "maxPromptTokens": 1024,
-      "prefixPercentage": 0.5
-  },
-
-
-```
-
-14•	All look like the following:
-
-![continue-extension-vsix-config](assets/3-configure-continue/continue-extension-vsix-config.png)
-
-15•	Switch to the new Model (or whatever name you setted)
-
-![continue-extension-vsix-switch](assets/3-configure-continue/continue-extension-vsix-switch.png)
-
-16•	Ctrl+I, Try a "write a basic fastapi server" prompt, enjoy the result.
-
-![continue-result](assets/3-configure-continue/continue-result.png)
-
-
-# （Optional）Configure continue in the VScode client
-Search for the Continue extension in vscode and install it.
-
-![image-20241030194553922](assets/3-configure-continue/image-20241030194553922.png)
-
-Add llama configuration items.
-
-![image-20241030194624961](assets/3-configure-continue/image-20241030194624961.png)
-
-The details are as follows, you need to replace `<your llama inference url>` and `<your api key>` portion.
+Add a new definition named `mistral`,  definition example as the following, you will need to replace `<your llm inference url>` and `<your api key>`, values from previous step.
 
 ```
 {
   "models": [
     {
-      "title": "Llama-3.1-70b",
-      "model": "llama",
-      "apiBase": "https://<your llama inference url>/v1/",
+      "title": "mistral",
+      "model": "mistral",
+      "apiBase": "<your llm inference url>/v1/",
       "completionOptions": {
       "temperature": 0.1,
       "topK": 1,
@@ -136,9 +70,9 @@ The details are as follows, you need to replace `<your llama inference url>` and
     }
   ],
   "tabAutocompleteModel": {
-    "title": "Llama-3.1-70b",
-    "model": "llama",
-    "apiBase": "https://<your llama inference url>/v1/",
+    "title": "mistral",
+    "model": "mistral",
+    "apiBase": "<your llm inference url>/v1/",
     "completionOptions": {
     "temperature": 0.1,
     "topK": 1,
@@ -216,11 +150,134 @@ The details are as follows, you need to replace `<your llama inference url>` and
 }
 ```
 
-Use the shortcut key to trigger the code assistant and enter the command: `add a new api for health check`
+All look like the following
 
-![image-20241030194808375](assets/3-configure-continue/image-20241030194808375.png)
+![image-20241130115612426](assets/3-configure-continue/image-20241130115612426.png)
+
+Switch to the new Model `mistral` for example
+
+![image-20241130115821894](assets/3-configure-continue/image-20241130115821894.png)
+
+Use shortcut Ctrl+I for MAC or Command +I for Windows, Try a  `write a basic fastapi server` prompt, and enjoy the generated code.
+
+![image-20241130120147555](assets/3-configure-continue/image-20241130120147555.png)
+
+
+# Optional - configure continue in local VScode
+Search for the Continue extension in vscode and install it.
+
+![image-20241030194553922](assets/3-configure-continue/image-20241030194553922.png)
+
+Add llm configuration items.
+
+![image-20241030194624961](assets/3-configure-continue/image-20241030194624961.png)
+
+The details are as follows, you need to replace `<your llm inference url>` and `<your api key>` portion.
+
+```
+{
+  "models": [
+    {
+      "title": "mistral",
+      "model": "mistral",
+      "apiBase": "<your llm inference url>/v1/",
+      "completionOptions": {
+      "temperature": 0.1,
+      "topK": 1,
+      "topP": 1,
+      "presencePenalty": 0,
+      "frequencyPenalty": 0
+      },
+      "provider": "openai",
+      "apiKey": "<your api key>"
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "mistral",
+    "model": "mistral",
+    "apiBase": "<your llm inference url>/v1/",
+    "completionOptions": {
+    "temperature": 0.1,
+    "topK": 1,
+    "topP": 1,
+    "presencePenalty": 0,
+    "frequencyPenalty": 0
+    },
+    "provider": "openai",
+    "apiKey": "<your api key>"
+},
+"tabAutocompleteOptions": {
+    "useCopyBuffer": false,
+    "maxPromptTokens": 1024,
+    "prefixPercentage": 0.5
+},
+  "customCommands": [
+    {
+      "name": "test",
+      "prompt": "{{{ input }}}\n\nWrite a comprehensive set of unit tests for the selected code. It should setup, run tests that check for correctness including important edge cases, and teardown. Ensure that the tests are complete and sophisticated. Give the tests just as chat output, don't edit any file.",
+      "description": "Write unit tests for highlighted code"
+    }
+  ],
+  "contextProviders": [
+    {
+      "name": "code",
+      "params": {}
+    },
+    {
+      "name": "docs",
+      "params": {}
+    },
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "terminal",
+      "params": {}
+    },
+    {
+      "name": "problems",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {}
+    },
+    {
+      "name": "codebase",
+      "params": {}
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "edit",
+      "description": "Edit selected code"
+    },
+    {
+      "name": "comment",
+      "description": "Write comments for the selected code"
+    },
+    {
+      "name": "share",
+      "description": "Export the current chat session to markdown"
+    },
+    {
+      "name": "cmd",
+      "description": "Generate a shell command"
+    },
+    {
+      "name": "commit",
+      "description": "Generate a git commit message"
+    }
+  ]
+}
+```
+
+Use the shortcut key(command + I for MAC, ctrl + I for Windows) to trigger the code assistant and enter the description: `add a new function api for health check`
+
+![image-20241126212536779](assets/3-configure-continue/image-20241126212536779.png)
 
 The code assistant generates a health check API.
 
-![image-20241030194844916](assets/3-configure-continue/image-20241030194844916.png)
+![image-20241126212733382](assets/3-configure-continue/image-20241126212733382.png)
 
