@@ -2,11 +2,11 @@
 
 Open the OpenShift AI Web Console, navigate to the `Settings` - `Notebook images` menu, import the custom image which can run a Code Server workbench.
 
-![notebook-image-import-new](assets/3-configure-continue/notebook-image-import-new.png)
+![image-20241130121125219](assets/3-configure-continue/image-20241130121125219.png)
 
 The custom image can be this one. [image](https://quay.io/repository/modh/codeserver?tab=tags&tag=codeserver-ubi9-python-3.9-2023b-20240301-6560116)
 
-![image-20241130110542822](assets/3-configure-continue/image-20241130110542822.png)
+![image-20241130121238821](assets/3-configure-continue/image-20241130121238821.png)
 
 Input the image url `quay.io/modh/codeserver:codeserver-ubi9-python-3.9-20241114` into the Image location field. Input the new notebook image's name like `codeserver-ubi9-python-3.9-20241114` ,  please remember it, we will use the name later.
 
