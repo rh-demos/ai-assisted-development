@@ -1,5 +1,7 @@
 # Environment
 
+All the following resources are available through "RHOAI on OCP on AWS with NVIDIA GPUs" demo service. Your hands-on experience will begin in the next chapter.
+
 ## Prerequisites
 
 - OpenShift 4.16 environment
