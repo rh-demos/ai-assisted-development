@@ -1,6 +1,6 @@
 # Environment
 
-All the following resources are available through "RHOAI on OCP on AWS with NVIDIA GPUs" demo service. Your hands-on experience will begin in the next chapter.
+All the following resources are available through "Al Assisted Development Demo with OpenShift Al" demo service. Your hands-on experience will begin in the next chapter.
 
 ## Prerequisites
 
