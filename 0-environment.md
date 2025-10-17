@@ -21,4 +21,5 @@ All the following resources are available through "Al Assisted Development Demo 
 8. Node Feature Discovery Operator
 9. Red Hat - Authorino
 10. Red Hat OpenShift AI
+11. GitLab Runner Operator
 
