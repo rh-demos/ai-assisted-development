@@ -1,6 +1,6 @@
 # Configure Gitlab
 
-Modify `<your gitlab host>`, `<your gitlab root password>`, `<your gitlab user password>` and `<your git lab db password>`in the configuration item in the charts/gitlab/values.yaml file, then install it.
+Modify `<your gitlab host>`, `<your gitlab root password>`, `<your gitlab user password>` and `<your git lab db password>`in the configuration item in the charts/gitlab/values.yaml file, you have to provide complex password for `<your gitlab root password>` and `<your gitlab user password>`, then install it.
 
 https://raw.githubusercontent.com/rh-demos/agnosticg/refs/heads/main/charts/gitlab/values.yaml
 
